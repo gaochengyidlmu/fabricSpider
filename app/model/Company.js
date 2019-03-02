@@ -7,7 +7,7 @@ module.exports = app => {
     {
       name: { type: String, default: '' }, // 公司名
       companyUrl: { type: [String], default: [] }, // 公司链接
-      tncId: { type: String, default: '' }, // 网站中的 id
+      webId: { type: String, default: '' }, // 网站中的 id
       region: { type: String, default: '' }, // 地区
       address: { type: String, default: '' }, // 详细地址
       description: { type: String, default: '' }, // 描述
@@ -22,5 +22,5 @@ module.exports = app => {
     },
   );
 
-  return mongoose.model('Product', CompanySchema);
+  return mongoose.model('Company', CompanySchema);
 };

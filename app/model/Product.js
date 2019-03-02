@@ -7,7 +7,7 @@ module.exports = app => {
     {
       name: { type: String, default: '' }, // 产品名
       productUrl: { type: [String], default: [] }, // 产品链接
-      tncId: { type: String, default: '' }, // 网站中的 id
+      webId: { type: String, default: '' }, // 网站中的 id
       price: { type: Number, default: 0 }, // 价格
       unit: { type: String, default: '' }, // 价格单位
       companyId: { type: String, default: '' }, // 对应的公司 id

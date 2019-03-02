@@ -1,6 +1,8 @@
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
+const errorCode = require('./errorCode');
+
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -28,6 +30,7 @@ module.exports = appInfo => {
       },
     },
   };
+  config.errorCode = errorCode;
 
   return config;
 };

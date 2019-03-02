@@ -7,9 +7,11 @@
     "declarations": true
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "egg": "^2.15.1",
     "egg-mongoose": "^3.1.1",
-    "egg-scripts": "^2.11.0"
+    "egg-scripts": "^2.11.0",
+    "egg-validate": "^2.0.2"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -27,7 +29,7 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-fabricSpider",
     "stop": "egg-scripts stop --title=egg-server-fabricSpider",
-    "dev": "egg-bin dev",
+    "dev": "egg-bin dev --port=10520",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
