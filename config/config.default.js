@@ -3,7 +3,6 @@
 'use strict';
 const errorCode = require('./errorCode');
 
-
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -30,7 +29,16 @@ module.exports = appInfo => {
       },
     },
   };
+
+  config.url = 'https://ml.tnc.com.cn/index.html';
+
   config.errorCode = errorCode;
+
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
 
   return config;
 };

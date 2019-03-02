@@ -3,7 +3,7 @@ module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
 
-  const SysInfoSchema = new Schema(
+  const ListSchema = new Schema(
     {
       website: { type: String, default: '' }, // 网址
       keyword: { type: String, default: '' }, // 当前正在查找的 keyword
@@ -17,5 +17,5 @@ module.exports = app => {
     },
   );
 
-  return mongoose.model('SysInfo', SysInfoSchema);
+  return mongoose.model('List', ListSchema);
 };
