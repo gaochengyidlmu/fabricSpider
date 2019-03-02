@@ -46,6 +46,17 @@ class ProductController extends Controller {
           logger.info(`插入 ${$list.keyword} 的第 ${i} 页成功`);
           sum += rows.length;
         }
+
+        await model.List.updateOne(
+          {
+            _id: $list._id,
+          },
+          {
+            status: 1,
+          },
+        );
+        logger.info(`${$list.keyword} 的数据插入完成`);
+        await ctx.helper.sleep(5000);
       }
 
       logger.info(`总共插入 ${sum} 条数据`);
