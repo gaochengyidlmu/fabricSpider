@@ -40,7 +40,7 @@ async function create() {
           $list.productNum += rows.length;
           await $list.save();
 
-          console.log(`插入 ${$list.keyword} 的第 ${i} 页成功`);
+          console.log(`插入 ${$list.keyword} 的第 ${i} 页成功\n\n`);
           sum += rows.length;
         }
 
@@ -74,6 +74,7 @@ async function create() {
     console.log('链接: ', listUrl);
     const result = await page.evaluate(() => {
       const noResultHTML = document.querySelectorAll('.no-result');
+      const productInfos = [];
       if (noResultHTML.length !== 0) {
         console.log(`查询没有对应结果`);
         return {
@@ -81,7 +82,6 @@ async function create() {
         };
       }
 
-      const productInfos = [];
       const productsHTML = document.querySelectorAll('.order-result-list.clearfix .ahover .tit a');
 
       console.log('productsHTML: ', productsHTML);
@@ -135,4 +135,4 @@ async function create() {
       rows: rows ? rows : [],
       count,
     };
-  }
+  } 
