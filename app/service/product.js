@@ -20,6 +20,7 @@ class ProductService extends Service {
     logger.info('链接: ', listUrl);
     const result = await page.evaluate(() => {
       const noResultHTML = document.querySelectorAll('.no-result');
+      const productInfos = [];
       if (noResultHTML.length !== 0) {
         console.log(`查询没有对应结果`);
         return {
@@ -27,7 +28,6 @@ class ProductService extends Service {
         };
       }
 
-      const productInfos = [];
       const productsHTML = document.querySelectorAll('.order-result-list.clearfix .ahover .tit a');
 
       console.log('productsHTML: ', productsHTML);
