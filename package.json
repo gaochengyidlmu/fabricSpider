@@ -27,7 +27,7 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-fabricSpider",
+    "start": "egg-scripts start --title=egg-server-fabricSpider",
     "stop": "egg-scripts stop --title=egg-server-fabricSpider",
     "dev": "egg-bin dev --port=10520",
     "debug": "egg-bin debug",

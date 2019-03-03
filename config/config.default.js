@@ -39,6 +39,17 @@ module.exports = appInfo => {
       enable: false,
     },
   };
+  config.logger = {
+    level: 'DEBUG',
+    allowDebugAtProd: true,
+    consoleLevel: 'DEBUG',
+    disableConsoleAfterReady: false,
+  };
+  config.cluster = {
+    listen: {
+      port: 20520,
+    },
+  };
 
   return config;
 };

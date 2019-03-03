@@ -8,7 +8,15 @@ module.exports = app => {
       name: { type: String, default: '' }, // 产品名
       productUrl: { type: String, default: '' }, // 产品链接
       webId: { type: String, default: '' }, // 网站中的 id
-      price: { type: Number, default: 0 }, // 价格
+      prices: {
+        type: [
+          {
+            price: { type: Number, default: 0 }, // 价格
+            起批量: { type: String, default: '' }, // 条件
+          },
+        ],
+        default: [],
+      }, // 价格
       unit: { type: String, default: '' }, // 价格单位
       companyId: { type: String, default: '' }, // 对应的公司 id
       imgUrls: { type: [String], default: [] }, // 产品图片组

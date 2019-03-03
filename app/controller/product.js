@@ -35,28 +35,55 @@ class ProductController extends Controller {
           logger.info(`开始插入 ${$list.keyword} 的第 ${i} 页数据`);
           await ctx.helper.sleep(1500);
           const { rows } = await service.product.insert({ $list, i });
-          await model.List.updateOne(
-            {
-              _id: $list._id,
-            },
-            {
-              pageNum: i + 1,
-            },
-          );
+
+          $list.pageNum = i + 1;
+          $list.productNum += rows.length;
+          await $list.save();
+
           logger.info(`插入 ${$list.keyword} 的第 ${i} 页成功`);
           sum += rows.length;
         }
 
-        await model.List.updateOne(
-          {
-            _id: $list._id,
-          },
-          {
-            status: 1,
-          },
-        );
-        logger.info(`${$list.keyword} 的数据插入完成`);
+        $list.status = 1;
+        await $list.save();
+        logger.info(`${$list.keyword} 的数据插入完成\n\n`);
         await ctx.helper.sleep(5000);
+      }
+
+      logger.info(`总共插入 ${sum} 条数据`);
+
+      return sum;
+    }
+
+    return run()
+      .then(data => ctx.helper.success(data))
+      .catch(error => ctx.helper.fail(error));
+  }
+
+  async update() {
+    const { ctx, service, logger } = this;
+    const { model } = ctx;
+
+    async function run() {
+      let go = true;
+      let sum = 0;
+      while (go) {
+        const $product = await model.Product.findOne({
+          status: 2,
+        });
+        logger.info(`开始更新 ${$product.name}`);
+
+        if (!$product) {
+          go = false;
+          break;
+        }
+
+        await service.product.completeInfo({ $product });
+        logger.info(`${$product.name} 的数据更新`);
+        sum++;
+        await ctx.helper.sleep(500);
+
+        break;
       }
 
       logger.info(`总共插入 ${sum} 条数据`);

@@ -10,6 +10,7 @@ module.exports = app => {
       href: { type: String, default: '' }, // 链接地址
       pageNum: { type: Number, default: 1 }, // 当前查找对应的 page 页
       maxPageNum: { type: Number, default: 15 }, // 最大查找页数
+      productNum: { type: Number, default: 0 }, // 产品数
       status: { type: Number, default: 0 }, // 0：未开始查找；1: 查询结束；2: 正在查找
     },
     {
