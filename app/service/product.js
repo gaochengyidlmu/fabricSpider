@@ -76,6 +76,7 @@ class ProductService extends Service {
       }
     }
     const count = await model.Product.countDocuments();
+    await browser.close();
 
     return {
       rows: rows ? rows : [],
@@ -177,6 +178,7 @@ class ProductService extends Service {
     //   },
     // );
     logger.info(`${$product.name} 数据已更新`);
+    await browser.close();
   }
 }
 

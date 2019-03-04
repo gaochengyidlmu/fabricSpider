@@ -58,6 +58,7 @@ class ListController extends Controller {
 
       const rows = await model.List.create(listArr);
       const count = await model.List.countDocuments();
+      await browser.close();
       return {
         rows,
         count,
