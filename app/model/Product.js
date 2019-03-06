@@ -2,6 +2,7 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
+  const ObjectId = mongoose.Types.ObjectId;
 
   const ProductSchema = new Schema(
     {
@@ -18,7 +19,7 @@ module.exports = app => {
         default: [],
       }, // 价格
       unit: { type: String, default: '' }, // 价格单位
-      companyId: { type: String, default: '' }, // 对应的公司 id
+      Company: { type: ObjectId, ref: 'Company' },
       imgUrls: { type: [String], default: [] }, // 产品图片组
       telphone: { type: String, default: '' }, // 联系电话
       qq: { type: String, default: '' }, // qq
