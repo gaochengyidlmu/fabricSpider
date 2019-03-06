@@ -111,3 +111,7 @@ async function completeInfo({ $company }) {
   console.log(`${$company.name} 数据已更新`);
   await browser.close();
 }
+
+process.on('SIGINT', async function() {
+  console.log('\n正在进行安全退出');
+});

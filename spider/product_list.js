@@ -136,3 +136,7 @@ async function insert({ $list, i }) {
     count,
   };
 }
+
+process.on('SIGINT', async function() {
+  console.log('\n正在进行安全退出');
+});

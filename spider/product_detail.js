@@ -45,7 +45,7 @@ async function update() {
     }
 
     console.log(`总共插入 ${sum} 条数据`);
-    console.log('安全结束进程');
+    console.log('安全结束进程\n');
     process.exit();
   }
 
@@ -191,5 +191,5 @@ async function insertCompany(Company) {
 }
 
 process.on('SIGINT', async function() {
-  console.log('正在进行安全退出');
+  console.log('\n正在进行安全退出');
 });
