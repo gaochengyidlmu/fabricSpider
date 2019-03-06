@@ -8,10 +8,31 @@ async function update() {
   async function run() {
     let go = true;
     let sum = 0;
-    while (go) {
-      const $product = await model.Product.findOne({
+
+    await model.Product.update(
+      {
+        status: 3,
+      },
+      {
         status: 2,
-      });
+      },
+      {
+        multi: true,
+      },
+    );
+
+    while (go) {
+      const $product = await model.Product.findOneAndUpdate(
+        {
+          status: 2,
+        },
+        {
+          status: 3,
+        },
+        {
+          new: true,
+        },
+      );
 
       if (!$product) {
         go = false;
@@ -168,3 +189,7 @@ async function insertCompany(Company) {
   }
   return $company._id;
 }
+
+process.on('SIGINT', async function() {
+  console.log('正在进行安全退出');
+});

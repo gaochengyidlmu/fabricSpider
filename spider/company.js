@@ -25,6 +25,8 @@ async function update() {
         }
       }
 
+      times = 0;
+
       await completeInfo({ $company });
       sum++;
       await helper.sleep(500);
