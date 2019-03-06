@@ -151,7 +151,12 @@ async function completeInfo({ $product }) {
     console.log('companyHTML: ', companyHTML);
     productInfo.Company.name = companyHTML.innerText;
 
-    const companyURLHTML = document.querySelector('.nav [data-code=introduce] a');
+    let companyURLHTML = document.querySelector('.nav [data-code=introduce] a');
+
+    if (!companyURLHTML) {
+      companyURLHTML = document.querySelector('.freeshop_menu.outline ul li:nth-child(2) a');
+    }
+
     console.log('companyURLHTML: ', companyURLHTML);
     productInfo.Company.companyUrl = companyURLHTML.href;
 
