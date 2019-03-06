@@ -6,8 +6,8 @@ update();
 
 async function update() {
   async function run() {
-    let go = true;
     let sum = 0;
+    let go = true;
     let times = 0;
     while (go) {
       const $company = await model.Company.findOne({
@@ -16,8 +16,8 @@ async function update() {
 
       if (!$company) {
         if (times < 10) {
-          await helper.sleep(++times * 15 * 1000);
-          console.log(`第 ${times} 次暂停`);
+          console.log(`第 ${++times} 次暂停`);
+          await helper.sleep(times * 15 * 1000);
           continue;
         } else {
           go = false;
@@ -31,8 +31,8 @@ async function update() {
     }
 
     console.log(`总共插入 ${sum} 条数据`);
-
-    return sum;
+    console.log('安全结束进程');
+    process.exit();
   }
 
   return run();
