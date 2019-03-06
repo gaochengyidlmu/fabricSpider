@@ -51,8 +51,8 @@ async function create() {
     }
 
     console.log(`总共插入 ${sum} 条数据`);
-
-    return sum;
+    console.log('安全结束进程');
+    process.exit();
   }
 
   await run();
