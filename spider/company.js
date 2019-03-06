@@ -15,7 +15,7 @@ async function update() {
       });
 
       if (!$company) {
-        if (times < 10) {
+        if (times < 30) {
           console.log(`第 ${++times} 次暂停`);
           await helper.sleep(times * 15 * 1000);
           continue;
@@ -27,7 +27,19 @@ async function update() {
 
       times = 0;
 
-      await completeInfo({ $company });
+      try {
+        await completeInfo({ $company });
+      } catch (e) {
+        console.error(e);
+        await model.Company.update(
+          {
+            _id: $company._id,
+          },
+          {
+            status: 4,
+          },
+        );
+      }
       sum++;
       await helper.sleep(500);
     }

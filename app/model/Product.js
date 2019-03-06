@@ -44,7 +44,7 @@ module.exports = app => {
       编织方式: { type: String, default: '' },
       主工艺: { type: String, default: '' },
       货号: { type: String, default: '' },
-      status: { type: Number, default: 2 }, // 0: 已删除；1: 状态正常；2: 待补充信息；3：更新中
+      status: { type: Number, default: 2 }, // 0: 已删除；1: 状态正常；2: 待补充信息；3：更新中；4：错误状态
     },
     {
       timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' },

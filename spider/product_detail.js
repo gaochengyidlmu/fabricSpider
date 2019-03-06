@@ -39,7 +39,19 @@ async function update() {
         break;
       }
 
-      await completeInfo({ $product });
+      try {
+        await completeInfo({ $product });
+      } catch (e) {
+        console.error(e);
+        await model.Product.update(
+          {
+            _id: $product._id,
+          },
+          {
+            status: 4,
+          },
+        );
+      }
       sum++;
       await helper.sleep(500);
     }
