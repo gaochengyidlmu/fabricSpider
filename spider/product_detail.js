@@ -48,7 +48,9 @@ async function completeInfo({ $product }) {
   const result = await page.evaluate(() => {
     const productInfo = {
       imgUrls: [],
-      Company: {},
+      Company: {
+        status: 2,
+      },
     };
 
     // 获取价格
