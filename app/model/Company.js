@@ -6,12 +6,12 @@ module.exports = app => {
   const CompanySchema = new Schema(
     {
       name: { type: String, default: '' }, // 公司名
-      companyUrl: { type: [String], default: [] }, // 公司链接
+      companyUrl: { type: String, default: '' }, // 公司链接
       webId: { type: String, default: '' }, // 网站中的 id
-      region: { type: String, default: '' }, // 地区
-      address: { type: String, default: '' }, // 详细地址
-      description: { type: String, default: '' }, // 描述
-      boss: { type: String, default: '' }, // 老板
+      所在地区: { type: String, default: '' }, // 地区
+      详细地址: { type: String, default: '' }, // 详细地址
+      公司简介: { type: String, default: '' }, // 描述
+      bossName: { type: String, default: '' }, // 老板
       经营模式: { type: String, default: '' },
       '主营产品/服务': { type: String, default: '' },
       采购产品: { type: String, default: '' },
