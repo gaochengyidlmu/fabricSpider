@@ -33,7 +33,7 @@ async function create() {
 
       for (let i = $list.pageNum; i <= $list.maxPageNum; i++) {
         console.log(`开始插入 ${$list.keyword} 的第 ${i} 页数据`);
-        await helper.sleep(1500);
+        await helper.sleep(100);
         const { rows } = await insert({ $list, i });
 
         $list.pageNum = i + 1;

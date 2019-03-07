@@ -54,7 +54,7 @@ async function update() {
         console.error(`${$product.name} 数据出现错误，现跳过该数据`);
       }
       sum++;
-      await helper.sleep(500);
+      await helper.sleep(50);
     }
 
     console.log(`总共插入 ${sum} 条数据`);
