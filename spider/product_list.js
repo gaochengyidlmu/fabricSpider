@@ -101,13 +101,24 @@ async function insert({ $list, i }) {
   const products = [];
   await Promise.all(
     result.productInfos.map(async productInfo => {
-      const count = await model.Product.countDocuments({
+      productInfo.面料名称 = $list.keyword;
+      const $product = await model.Product.findOne({
         webId: productInfo.webId,
       });
 
-      if (count === 0) {
+      if (!$product) {
         products.push(productInfo);
         console.log('创建产品: ', productInfo.name);
+      } else if (!$product.面料名称) {
+        await model.Product.updateOne(
+          {
+            webId: productInfo.webId,
+          },
+          {
+            面料名称: $list.keyword,
+          },
+        );
+        console.log('更新产品信息: ', productInfo.name);
       }
     }),
   );

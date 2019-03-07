@@ -25,6 +25,7 @@ module.exports = app => {
       qq: { type: String, default: '' }, // qq
       address: { type: String, default: '' }, // 地址
       isNaYang: { type: Boolean, default: false }, // 是否允许拿样
+      面料名称: { type: String, default: '' },
       织物组织: { type: String, default: '' },
       克重: { type: String, default: '' },
       成分: { type: String, default: '' },
