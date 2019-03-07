@@ -51,6 +51,7 @@ async function update() {
             status: 4,
           },
         );
+        console.error(`${$product.name} 数据出现错误，现跳过该数据`);
       }
       sum++;
       await helper.sleep(500);
