@@ -33,7 +33,7 @@ async function create() {
 
       for (let i = $list.pageNum; i <= $list.maxPageNum; i++) {
         console.log(`开始插入 ${$list.keyword} 的第 ${i} 页数据`);
-        await helper.sleep(100);
+        await helper.sleep(1000);
         const { rows } = await insert({ $list, i });
 
         $list.pageNum = i + 1;
@@ -147,7 +147,3 @@ async function insert({ $list, i }) {
     count,
   };
 }
-
-process.on('SIGINT', async function() {
-  console.log('\n正在进行安全退出');
-});

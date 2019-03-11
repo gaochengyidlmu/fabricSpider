@@ -19,16 +19,16 @@ module.exports = app => {
         default: [],
       }, // 价格
       unit: { type: String, default: '' }, // 价格单位
-      Company: { type: ObjectId, ref: 'Company' },
+      Company: { type: ObjectId, ref: 'Company', index: true },
       imgUrls: { type: [String], default: [] }, // 产品图片组
       telphone: { type: String, default: '' }, // 联系电话
       qq: { type: String, default: '' }, // qq
       address: { type: String, default: '' }, // 地址
       isNaYang: { type: Boolean, default: false }, // 是否允许拿样
-      面料名称: { type: String, default: '' },
+      面料名称: { type: String, default: '', index: true },
       织物组织: { type: String, default: '' },
       克重: { type: String, default: '' },
-      成分: { type: String, default: '' },
+      成分: { type: String, default: '', index: true },
       特殊处理: { type: String, default: '' },
       混纺比例: { type: String, default: '' },
       颜色: { type: String, default: '' },

@@ -54,7 +54,8 @@ async function update() {
         console.error(`${$product.name} 数据出现错误，现跳过该数据`);
       }
       sum++;
-      await helper.sleep(50);
+      await helper.sleep(1500);
+      // break;
     }
 
     console.log(`总共插入 ${sum} 条数据`);
@@ -71,14 +72,27 @@ async function completeInfo({ $product }) {
   const browser = await puppeteer.launch({
     ignoreHTTPSErrors: true,
     headless: true,
+    // headless: false,
   });
 
   const page = await browser.newPage();
+  // await page.setRequestInterception(true);
+  // page.on('request', request => {
+  //   const headers = request.headers();
+  //   headers['REMOTE_ADDR'] = '61.135.129.123';
+  //   headers['REMOTE-ADDR'] = '61.135.129.123';
+  //   headers['X_FORWARDED_FOR'] = '61.135.129.123';
+  //   headers['X-Forwarded-For'] = '61.135.129.123';
+  //   headers['X-Real-IP'] = '61.135.129.123';
+  //   headers['user-agent'] = 'Chrome/69.0.3611.0';
+  //   request.continue({ headers });
+  // });
   await page.goto($product.productUrl, {
     timeout: 0,
     waitUntil: ['domcontentloaded'],
   });
   console.log('链接: ', $product.productUrl);
+
   const result = await page.evaluate(() => {
     const productInfo = {
       imgUrls: [],
@@ -207,7 +221,3 @@ async function insertCompany(Company) {
   }
   return $company._id;
 }
-
-process.on('SIGINT', async function() {
-  console.log('\n正在进行安全退出');
-});
